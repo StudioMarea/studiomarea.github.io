@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Marea — Photography · Seattle & Costa Rica</title>
+<meta name="description" content="Marea — fine-art photography portfolio spanning landscapes, portraits, maternity, nature, animals and architecture. Based in Seattle and Costa Rica.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0e1418;--bg-2:#141d22;--sand:#d8ccb8;--clay:#b08968;--moss:#6b7c5c;
+  --ocean:#3a6f7d;--ocean-bright:#4a90a4;--ink:#e9e4d8;--muted:#8a948f;--line:rgba(216,204,184,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:'Cormorant Garamond','Georgia',serif;font-weight:500;letter-spacing:.5px}
+.wrap{max-width:1280px;margin:0 auto;padding:0 32px}
+a{color:inherit;text-decoration:none}
+.eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--clay);font-weight:500}
+header{position:fixed;top:0;left:0;right:0;z-index:100;transition:.4s}
+header.scrolled{background:rgba(14,20,24,.82);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:78px}
+.logo{font-family:'Cormorant Garamond',serif;font-size:26px;letter-spacing:2px;font-weight:600}
+.logo span{color:var(--clay)}
+.nav-links{display:flex;gap:38px;font-size:13px;letter-spacing:1.5px;text-transform:uppercase}
+.nav-links a{color:var(--muted);transition:.25s;position:relative}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:1px;background:var(--clay);transition:.3s}
+.nav-links a:hover::after{width:100%}
+.menu-btn{display:none;background:none;border:none;color:var(--ink);font-size:24px;cursor:pointer}
+.hero{height:100vh;min-height:640px;position:relative;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.05);animation:slowzoom 18s ease-in-out infinite alternate}
+@keyframes slowzoom{to{transform:scale(1.15)}}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,20,24,.45) 0%,rgba(14,20,24,.1) 40%,rgba(14,20,24,.92) 100%)}
+.hero-content{position:relative;z-index:2;padding-bottom:9vh}
+.hero h1{font-size:clamp(46px,8vw,104px);line-height:.98;font-weight:500;margin:18px 0 22px}
+.hero h1 em{font-style:italic;color:var(--sand)}
+.hero p{max-width:480px;color:var(--ink);opacity:.85;font-size:17px}
+.scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-cue .line{width:1px;height:46px;background:linear-gradient(var(--clay),transparent);animation:cue 2s infinite}
+@keyframes cue{0%,100%{opacity:.3}50%{opacity:1}}
+section{padding:120px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:54px;flex-wrap:wrap;gap:20px}
+.sec-head h2{font-size:clamp(32px,5vw,56px);line-height:1}
+.sec-head p{max-width:380px;color:var(--muted);font-size:15px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.filter{background:transparent;border:1px solid var(--line);color:var(--muted);padding:9px 20px;border-radius:30px;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;transition:.28s;font-family:inherit}
+.filter:hover{color:var(--ink);border-color:var(--clay)}
+.filter.active{background:var(--clay);border-color:var(--clay);color:#1a130c}
+.gallery{columns:3;column-gap:18px}
+.shot{break-inside:avoid;margin-bottom:18px;position:relative;overflow:hidden;border-radius:3px;cursor:pointer}
+.shot img{width:100%;display:block;transition:.7s ease;filter:saturate(.92)}
+.shot:hover img{transform:scale(1.06);filter:saturate(1.05)}
+.shot .meta{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:20px;background:linear-gradient(transparent 50%,rgba(14,20,24,.85));opacity:0;transition:.4s}
+.shot:hover .meta{opacity:1}
+.shot .meta .cat{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--clay)}
+.shot .meta .ttl{font-family:'Cormorant Garamond',serif;font-size:22px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.about-img{position:relative;border-radius:3px;overflow:hidden}
+.about-img img{width:100%;display:block}
+.about-txt h2{font-size:clamp(30px,4.5vw,50px);margin-bottom:26px;line-height:1.05}
+.about-txt p{color:var(--muted);margin-bottom:20px;font-size:16px}
+.about-txt .sig{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:26px;color:var(--sand);margin-top:10px}
+.locs{display:flex;gap:40px;margin-top:34px}
+.loc .eyebrow{display:block;margin-bottom:6px}
+.loc strong{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:500}
+#services{background:var(--bg-2)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.svc{background:var(--bg-2);padding:44px 36px;transition:.4s}
+.svc:hover{background:var(--bg)}
+.svc .num{font-family:'Cormorant Garamond',serif;font-size:18px;color:var(--clay)}
+.svc h3{font-size:27px;margin:18px 0 14px}
+.svc p{color:var(--muted);font-size:15px}
+.contact{text-align:center}
+.contact h2{font-size:clamp(40px,7vw,92px);line-height:1;margin:14px 0 30px}
+.contact h2 em{font-style:italic;color:var(--clay)}
+.mail{display:inline-block;font-size:20px;letter-spacing:1px;border-bottom:1px solid var(--clay);padding-bottom:6px;transition:.3s}
+.mail:hover{color:var(--clay)}
+.socials{display:flex;gap:28px;justify-content:center;margin-top:46px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.socials a:hover{color:var(--ink)}
+footer{border-top:1px solid var(--line);padding:40px 0;text-align:center;color:var(--muted);font-size:12px;letter-spacing:1px}
+@media(max-width:980px){.gallery{columns:2}.about{grid-template-columns:1fr;gap:40px}.svc-grid{grid-template-columns:1fr}.nav-links{display:none}.menu-btn{display:block}}
+@media(max-width:600px){.gallery{columns:1}.wrap{padding:0 22px}.locs{flex-direction:column;gap:20px}}</style>
+</head>
+<body>
+
+<!-- ===================== NAVIGATION ===================== -->
+<header id="hdr"><div class="wrap"><nav>
+  <div class="logo">Marea<span>.</span></div>
+  <div class="nav-links">
+    <a href="#work">Work</a><a href="#about">About</a><a href="#services">Services</a><a href="#contact">Contact</a>
+  </div>
+  <button class="menu-btn" aria-label="Menu">☰</button>
+</nav></div></header>
+
+<!-- ===================== HERO ===================== -->
+<div class="hero">
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1505765050516-f72dcac9c60e?auto=format&fit=crop&w=2000&q=80')"></div>
+  <div class="wrap hero-content">
+    <span class="eyebrow">Seattle · Costa Rica</span>
+    <h1>Light between<br><em>two coasts.</em></h1>
+    <p>A photographic portfolio spanning wild landscapes, quiet portraits, and the fleeting moments in between — shot from the Pacific Northwest to the tropics.</p>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+</div>
+
+<!-- ===================== WORK / GALLERY =====================
+     TO ADD A PHOTO: copy one <div class="shot"> line below, change the
+     data-cat (landscape | nature | portrait | maternity | animal | architecture),
+     the image URL, and the title. That's it.
+================================================================ -->
+<section id="work"><div class="wrap">
+  <div class="sec-head">
+    <div><span class="eyebrow">Selected Work</span><h2>The Portfolio</h2></div>
+    <p>Six bodies of work, one way of seeing — patient, natural, and grounded in place.</p>
+  </div>
+  <div class="filters">
+        <button class="filter active" data-f="all">All Work</button>
+        <button class="filter " data-f="landscape">Landscape</button>
+        <button class="filter " data-f="nature">Nature</button>
+        <button class="filter " data-f="portrait">Portraits</button>
+        <button class="filter " data-f="maternity">Maternity</button>
+        <button class="filter " data-f="animal">Animal Portraits</button>
+        <button class="filter " data-f="architecture">Architecture</button>
+  </div>
+  <div class="gallery" id="gallery">
+        <div class="shot" data-cat="landscape"><img loading="lazy" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?auto=format&fit=crop&w=900&q=70" alt="Cascade Dawn"><div class="meta"><span class="cat">landscape</span><span class="ttl">Cascade Dawn</span></div></div>
+        <div class="shot" data-cat="landscape"><img loading="lazy" src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=70" alt="Pacific Fog"><div class="meta"><span class="cat">landscape</span><span class="ttl">Pacific Fog</span></div></div>
+        <div class="shot" data-cat="landscape"><img loading="lazy" src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=900&q=70" alt="Tidal Light"><div class="meta"><span class="cat">landscape</span><span class="ttl">Tidal Light</span></div></div>
+        <div class="shot" data-cat="nature"><img loading="lazy" src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=900&q=70" alt="Rainforest"><div class="meta"><span class="cat">nature</span><span class="ttl">Rainforest</span></div></div>
+        <div class="shot" data-cat="nature"><img loading="lazy" src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=70" alt="River Stones"><div class="meta"><span class="cat">nature</span><span class="ttl">River Stones</span></div></div>
+        <div class="shot" data-cat="nature"><img loading="lazy" src="https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=900&q=70" alt="Canopy"><div class="meta"><span class="cat">nature</span><span class="ttl">Canopy</span></div></div>
+        <div class="shot" data-cat="animal"><img loading="lazy" src="https://images.unsplash.com/photo-1474511320723-9a56873867b5?auto=format&fit=crop&w=900&q=70" alt="Quetzal"><div class="meta"><span class="cat">animal</span><span class="ttl">Quetzal</span></div></div>
+        <div class="shot" data-cat="animal"><img loading="lazy" src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?auto=format&fit=crop&w=900&q=70" alt="Stillness"><div class="meta"><span class="cat">animal</span><span class="ttl">Stillness</span></div></div>
+        <div class="shot" data-cat="animal"><img loading="lazy" src="https://images.unsplash.com/photo-1546182990-dffeafbe841d?auto=format&fit=crop&w=900&q=70" alt="Wild Gaze"><div class="meta"><span class="cat">animal</span><span class="ttl">Wild Gaze</span></div></div>
+        <div class="shot" data-cat="portrait"><img loading="lazy" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=70" alt="Natural Light"><div class="meta"><span class="cat">portrait</span><span class="ttl">Natural Light</span></div></div>
+        <div class="shot" data-cat="portrait"><img loading="lazy" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=70" alt="Quiet"><div class="meta"><span class="cat">portrait</span><span class="ttl">Quiet</span></div></div>
+        <div class="shot" data-cat="portrait"><img loading="lazy" src="https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?auto=format&fit=crop&w=900&q=70" alt="Golden Hour"><div class="meta"><span class="cat">portrait</span><span class="ttl">Golden Hour</span></div></div>
+        <div class="shot" data-cat="maternity"><img loading="lazy" src="https://images.unsplash.com/photo-1555252333-9f8e92e65df9?auto=format&fit=crop&w=900&q=70" alt="Becoming"><div class="meta"><span class="cat">maternity</span><span class="ttl">Becoming</span></div></div>
+        <div class="shot" data-cat="maternity"><img loading="lazy" src="https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=900&q=70" alt="Awaiting"><div class="meta"><span class="cat">maternity</span><span class="ttl">Awaiting</span></div></div>
+        <div class="shot" data-cat="maternity"><img loading="lazy" src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=900&q=70" alt="New Light"><div class="meta"><span class="cat">maternity</span><span class="ttl">New Light</span></div></div>
+        <div class="shot" data-cat="architecture"><img loading="lazy" src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=900&q=70" alt="Lines"><div class="meta"><span class="cat">architecture</span><span class="ttl">Lines</span></div></div>
+        <div class="shot" data-cat="architecture"><img loading="lazy" src="https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=900&q=70" alt="Concrete"><div class="meta"><span class="cat">architecture</span><span class="ttl">Concrete</span></div></div>
+        <div class="shot" data-cat="architecture"><img loading="lazy" src="https://images.unsplash.com/photo-1429497419816-9ca5cfb4571a?auto=format&fit=crop&w=900&q=70" alt="Form"><div class="meta"><span class="cat">architecture</span><span class="ttl">Form</span></div></div>
+  </div>
+</div></section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about"><div class="wrap"><div class="about">
+  <div class="about-img"><img src="https://images.unsplash.com/photo-1502323777036-f29e3972d82f?auto=format&fit=crop&w=900&q=70" alt="Marea, photographer"></div>
+  <div class="about-txt">
+    <span class="eyebrow">About</span>
+    <h2>Photographing the space between wild and tender.</h2>
+    <p>I split my life and lens between the misted forests of the Pacific Northwest and the green coastlines of Costa Rica. That distance shapes how I see — a search for honest light, raw texture, and the calm that lives inside a moment.</p>
+    <p>Whether it's a glacier-fed river, an expecting mother, or a resident of the rainforest canopy, my approach stays the same: unhurried, natural, and devoted to the subject.</p>
+    <div class="sig">— Marea</div>
+    <div class="locs">
+      <div class="loc"><span class="eyebrow">Based in</span><strong>Seattle, WA</strong></div>
+      <div class="loc"><span class="eyebrow">&amp; in</span><strong>Costa Rica</strong></div>
+    </div>
+  </div>
+</div></div></section>
+
+<!-- ===================== SERVICES ===================== -->
+<section id="services"><div class="wrap">
+  <div class="sec-head">
+    <div><span class="eyebrow">Working Together</span><h2>Services</h2></div>
+    <p>Available for commissions, sessions, and licensing in both regions and beyond.</p>
+  </div>
+  <div class="svc-grid">
+    <div class="svc"><span class="num">01</span><h3>Portrait &amp; Maternity</h3><p>Intimate, natural-light sessions on location — capturing people and milestones with quiet honesty.</p></div>
+    <div class="svc"><span class="num">02</span><h3>Nature &amp; Wildlife</h3><p>Landscape, nature, and animal portraiture from the field, made with patience and respect for place.</p></div>
+    <div class="svc"><span class="num">03</span><h3>Architecture &amp; Prints</h3><p>Architectural commissions and fine-art print licensing for spaces, publications, and collections.</p></div>
+  </div>
+</div></section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact"><div class="wrap contact">
+  <span class="eyebrow">Get in touch</span>
+  <h2>Let's make<br>something <em>still.</em></h2>
+  <a class="mail" href="mailto:hello@studiomarea.com">hello@studiomarea.com</a>
+  <div class="socials">
+    <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+    <a href="#" target="_blank" rel="noopener">Behance</a>
+    <a href="#contact">Journal</a>
+  </div>
+</div></section>
+
+<footer><div class="wrap">© <span id="yr"></span> Marea Photography · Seattle &amp; Costa Rica · Crafted with light</div></footer>
+
+<!-- ===================== SCRIPT ===================== -->
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var hdr = document.getElementById('hdr');
+  window.addEventListener('scroll', function(){ hdr.classList.toggle('scrolled', window.scrollY > 40); });
+  document.querySelectorAll('.filter').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.filter').forEach(function(b){ b.classList.remove('active'); });
+      btn.classList.add('active');
+      var f = btn.dataset.f;
+      document.querySelectorAll('.shot').forEach(function(s){
+        s.style.display = (f === 'all' || s.dataset.cat === f) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>
